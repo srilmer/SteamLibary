@@ -1,0 +1,145 @@
+<div class="row">
+  <div class="col-sm-6 col-md-8 col-lg-9">
+    <h1>Over deze applicatie</h1>
+    <p>
+      Deze applicatie is gemaakt in het kader van het vak 'Clientside web frameworks' van Avans Hogeschool
+      Breda.
+    </p>
+    <h3>Path of Heroes</h3>
+    <p>
+      Dit project wordt een knipoog naar de 'old school' RPG's. Met een account kan je, je eigen
+      <b>Heroes</b> beheren, levelen en uitrusten. Door <b>quests</b> uit te voeren verdien je <b>gold</b> en
+      <b>exp punten</b> waardoor je <b>Hero</b> sterker wordt, <b>gold</b> kan gebruikt worden voor
+      <b>quests</b> of <b>maken van betere wapens of uitrusting.</b>
+    </p>
+    <h3>Heroes</h3>
+    <p>
+      In Path of Heroes kun je je eigen Heroes beheren, je kan een nieuwe Hero aanmaken, een oude verwijderen,
+      een bestaande hero aanpassen(naam). Na het inloggen worden Heroes in een lijst getoond, deze lijst kan
+      worden gesorteerd op level, heroPower of naam.
+    </p>
+    <p>
+      Iedere Hero heeft zijn eigen inventory met items waar de Hero zijn gear kan opslaan. de inventory zal
+      een limiet krijgen aan de hand van het level van de Hero.
+    </p>
+    <h3>Item System</h3>
+    <p>
+      items zijn gebaseerd op rarity(Normal, Magic, Rare, Epic, Legendary) en itemLevel. Hoe beter de rarity
+      en itemlevel deste meer gearscore. Een hogere Gearscore is betere Hero. Het item Systeem is grotendeels
+      gebaseerd op willekeurige waardes en op basis van het itemLevel en item rarity. Met een formule word de
+      totale gearScore berekent van het item.
+    </p>
+    <h3>Crafting</h3>
+    <p>
+      Het crafting systeem kent twee kanten, het maken van items en het verkopen van items voor gold. Het
+      maken van een item kost gold en is gebaseerd op drie factoren, waarvan één door de user gekozen kunnen
+      worden. De factoren zijn, <b>Rarity(+ random range)</b>, <b>itemLevel(Hero level + 0-10)</b>. De random
+      range op rarity wordt ook hoger op basis van de rarity. Elke rarity heeft ook zijn eigen kleur schema om
+      zo duidelijk zichtbaar te maken wat voor rarity de items hebben.
+      <br />
+      Misschien is er ook nog een idee het maken van object te beperken met een slagingspercentage
+      <br />
+      <li style="color:black;"><b>Normal (0-10)</b></li>
+      <li style="color:blue;"><b>Magic (20-50)</b></li>
+      <li style="color:red;"><b>Rare (100-200)</b></li>
+      <li style="color:plum;"><b>Epic (300-500)</b></li>
+      <li style="color:orange;"><b>Legendary (750-1000)</b></li>
+    </p>
+
+    <h3>GearScore formule</h3>
+    <p>
+      <b>(rarity + itemLevel) * (random int 0-10) = gearScore</b>
+      <br />
+      <b>gearScore van alle items op de hero => heroPower</b>
+    </p>
+
+    <h3>Quests</h3>
+    <p>
+      Quests zijn missies voor de Heroes om Gold en exp punten te behalen om zodoende hoger in level te
+      worden. Het slagingspercentage van quests is gebaseerd op zijn of haar HeroPower(totale gearScore van de
+      Hero). elke 10 levels krijgt de hero nieuwe quests waardoor ze meer gold en exp punten kunnen halen maar
+      een hoger HeroPower voor benodigd is om een goed slagingspercentage te krijgen. Quests kunnen worden wat
+      makkelijker gemaakt worden met de extra kosten van gold maar dit een klein voordeel (5%).
+      <br />
+
+      <b
+        >Quests zullen mogelijk een cooldown periode bevatten wat voorkomt dat je quests achter elkaar kan
+        doen zonder te wachten.
+      </b>
+    </p>
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="card">
+      <div class="d-flex justify-content-center align-items-center">
+        <img
+          src="assets/images/portfolio_stefan.png"
+          class="card-img-top rounded-circle border profile-pic"
+          alt="..."
+        />
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Stefan Ilmer</h5>
+        <p class="card-text">
+          Studentnummer: 2075582
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>Entiteiten</h3>
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <p>User</p>
+    <ul>
+      <li>username</li>
+      <li>password</li>
+      <li>email</li>
+      <li>heroes [reference to hero ID's]</li>
+    </ul>
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <p>Hero</p>
+    <ul>
+      <li>id: number</li>
+      <li>name: string</li>
+      <li>createdDate: Date</li>
+      <li>Gender: string</li>
+      <li>gold: number</li>
+      <li>heroPower: number</li>
+      <li>inventory: [SubDocument with items (embedded)]</li>
+      <li>Gear(Subdocument)</li>
+      <ul>
+        <li>Helm</li>
+        <li>Shoulders</li>
+        <li>Chestplate</li>
+        <li>Gloves</li>
+        <li>LegPlates</li>
+        <li>Boots</li>
+        <li>MainWeapon</li>
+        <li>SecondaryWeapon</li>
+      </ul>
+    </ul>
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <p>Item</p>
+    <ul>
+      <li>naam: string</li>
+      <li>type: enum(string)</li>
+      <li>itemScore: number</li>
+      <li>itemLevel: number</li>
+      <li>rarity: enum(string)</li>
+      <li>goldPrice: number</li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <h3>Use Cases</h3>
+    <p>De applicatie biedt de volgende functionaliteit.</p>
+    <div *ngFor="let UC of useCases">
+      <app-usecase [useCase]="UC"></app-usecase>
+    </div>
+  </div>
+</div>
